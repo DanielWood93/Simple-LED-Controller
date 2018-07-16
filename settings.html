@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <link href='main.css' rel='stylesheet' type='text/css'>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="144x144"  href="/favicon-144x144.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00878f">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+    <script src="WebSocket.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <center>
+        <header>
+            <h1>Settings</h1>
+        </header>
+        </br>
+        
+        <div>
+            <h2>Power</h2>
+            <table>
+                <tr>
+                    <td>Connector 1:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox1" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Connector 2:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox2" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Connector 3:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox3" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Connector 4:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox4" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr> 
+                
+                <tr>
+                    <td>Connector 5:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox5">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr> 
+                
+                <tr>
+                    <td>Connector 6:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox6">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr> 
+                
+                <tr>
+                    <td>Connector 7:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" id="checkbox7">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr> 
+                
+                <tr>
+                    <td>Connector 8:</td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox"id="checkbox8">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr> 
+            </table>
+
+            <p style="margin:8px 0px"><button id="saveconnectorstates" class="button" style="background-color:#999" onclick="saveConnectorStates();">Save</button></p>
+
+        </div>
+        
+        </br>
+        
+        <div>
+            <p style="margin:8px 0px"><button id="reboot" class="button" style="background-color:#999" onclick="reboot();">Reboot</button></p>
+        </div>
+        
+    </center>
+</body>
+</html>
