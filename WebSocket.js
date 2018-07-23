@@ -1,5 +1,9 @@
 var rainbowEnable = false;
+var ledsOn = true;
+
+/*
 var connection = new WebSocket('ws://'+location.hostname+':81/', ['arduino']);
+
 connection.onopen = function () {
     connection.send('Connect ' + new Date());
 };
@@ -12,6 +16,29 @@ connection.onmessage = function (e) {
 connection.onclose = function(){
     console.log('WebSocket connection closed');
 };
+*/
+
+    
+var http = new XMLHttpRequest();
+function post_without_reload(path, params, method) {
+    if (http) {
+        http.abort();
+    }
+    http = new XMLHttpRequest();
+    http.open(method, path, true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    http.send(params);
+}
+
+
+ColorPicker(document.getElementById('mycolorpicker'), function (hex, hsv, rgb) {
+    document.body.style.backgroundColor = hex;
+    post_without_reload("/", "red=" + rgb.r + "&blue=" + rgb.b + "&green=" + rgb.g, "POST");
+    connection.send();
+});
+
+
+
 
 function sendRGB() {
     //console.log(document.getElementById('r').value);
@@ -29,30 +56,30 @@ function sendRGB() {
     //connection.send(rgbstr);
 }
 
+
 function rainbowEffect(){
-    console.log('rainbow effect');
     rainbowEnable = ! rainbowEnable;
     if(rainbowEnable){
-        connection.send("R");
-        document.getElementById('rainbow').style.backgroundColor = '#00878F';
-        document.getElementById('r').className = 'disabled';
-        document.getElementById('g').className = 'disabled';
-        document.getElementById('b').className = 'disabled';
-        document.getElementById('r').disabled = true;
-        document.getElementById('g').disabled = true;
-        document.getElementById('b').disabled = true;
+        console.log('Rainbow effect: on');
+        //connection.send("R");
+
     } else {
-        connection.send("N");
-        document.getElementById('rainbow').style.backgroundColor = '#999';
-        document.getElementById('r').className = 'enabled';
-        document.getElementById('g').className = 'enabled';
-        document.getElementById('b').className = 'enabled';
-        document.getElementById('r').disabled = false;
-        document.getElementById('g').disabled = false;
-        document.getElementById('b').disabled = false;
-        sendRGB();
+        console.log('Rainbow effect: off');
+        //connection.send("N");
     }
 }
+
+function ledsOnOff(){
+    ledsOn = ! ledsOn;
+    if(ledsOn){
+        console.log('LEDs: on');
+        document.getElementById('onoff').style.backgroundColor = '#00878F';
+    } else {
+        console.log('LEDs: off');
+        document.getElementById('onoff').style.backgroundColor = '#999';
+    }
+}
+
 
 function saveConnectorStates(){
     var connectorStates='';
@@ -66,10 +93,10 @@ function saveConnectorStates(){
         }
     }
     console.log('connectorStates: ' + connectorStates);
-    connection.send("CS-"+connectorStates)
+    //connection.send("CS-"+connectorStates)
 }
 
 
-function reboot(){
+function reboot_esp8266(){
     console.log('rebooting...');
 }

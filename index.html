@@ -43,23 +43,39 @@
                     //console.log(hsv.h, hsv.s, hsv.v);         // [0-359], [0-1], [0-1]
                     console.log(rgb.r, rgb.g, rgb.b);         // [0-255], [0-255], [0-255]
                     document.body.style.backgroundColor = hex;        // #HEX
+                    //sendRGB();
                 });
             </script>
             <div style="clear:both"></div>
         </div>
 
         </br>
-        <div>        
-            <h3>Effects</h3>
-            <p style="margin:8px 0px"><button id="rainbow" class="button" style="background-color:#999" onclick="rainbowEffect();">Rainbow</button></p>
-            <p style="margin:8px 0px"><button id="fade" class="button" style="background-color:#999" onclick="fadeEffect();">Fade</button></p>
+        <div>
+            <table>
+                <td>Rainbow</td>
+                <td>
+                    <label class="switch">
+                        <input type="checkbox" id="rainbow" onclick="rainbowEffect();">
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </table>
         </div>
         
         </br>
         <div>
             </br>
-            <p style="margin:8px 0px"><button id="onoff" class="button" style="background-color:#999" onclick="onOff();">On/Off</button></p>
-            <p style="margin:8px 0px"><button id="settings" class="button" style="background-color:#999" href="settings.html">Settings</button></p>
+            
+            <table>
+                <td>LEDs On/Off</td>
+                <td>
+                    <label class="switch">
+                        <input type="checkbox" id="onoff" onclick="ledsOnOff();" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </td>               
+            </table>            
+            <p style="margin:8px 0px"><button id="settings" class="button" style="background-color:#999" href="#settings.html">Settings</button></p>
         </div>
     </center>
 </body>
